@@ -10,6 +10,8 @@ const http = require("http");
 
 // const cors = require("./config/cors");
 
+//Done
+
 const PORT = 4000;
 const DB =
   "mongodb+srv://mayankjha014:1234@cluster0.irjg6zb.mongodb.net/Social_Message?retryWrites=true&w=majority";
