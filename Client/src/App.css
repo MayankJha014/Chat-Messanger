@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+.speech-bubble-right::before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 5px solid #9ae6b4;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #9ae6b4;
+  border-bottom: 5px solid transparent;
+  right: -10px;
+  top: 0;
+}
+
+.speech-bubble-left::before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 5px solid transparent;
+  border-right: 5px solid white;
+  border-top: 5px solid white;
+  border-bottom: 5px solid transparent;
+  left: -10px;
+
+  top: 0;
+}
+
+::-webkit-scrollbar {
+  background: #374150;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 5rem;
+}
+
+.notification {
+  transform: translateX(-2rem);
+  opacity: 1;
+  transition-property: transform, opacity;
+  transition-timing-function: ease-in-out;
+  transition-duration: 750ms;
+}
+
+.sidebar1 span {
+  opacity: 0;
+}
+
+.sidebar1:hover span {
+  opacity: 1;
+}
+.sidebar2 span {
+  opacity: 0;
+}
+
+.sidebar2:hover span {
+  opacity: 1;
+}
+.sidebar3 span {
+  opacity: 0;
+}
+
+.sidebar3:hover span {
+  opacity: 1;
+}
+.sidebar4 span {
+  opacity: 0;
+}
+
+.sidebar4:hover span {
+  opacity: 1;
+}
+.sidebar5 span {
+  opacity: 0;
+}
+
+.sidebar5:hover span {
+  opacity: 1;
+}
