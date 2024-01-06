@@ -607,7 +607,7 @@ const SendMessage = (props) => {
   const dispatch = useDispatch();
 
   const handleTyping = (e) => {
-    setContent(e);
+    setContent(e.target.value);
 
     if (!props.socketConnected) {
       return;
@@ -655,15 +655,18 @@ const SendMessage = (props) => {
       } px-4 pb-5 pt-2 transition-colors duration-500`}
     >
       <div className="flex items-center">
-        <InputEmoji
+        <input
           className="w-full border h-11 font-public-sans text-sm bg-slate-200  focus:outline-none rounded-md py-2 px-4 mr-2"
           type="text"
           placeholder="Type your message..."
           name="sendMsg"
           value={content}
-          onChange={(e) => handleTyping(e)}
-          onEnter={handleSubmit}
-        />
+         onChange={handleTyping}
+onKeyDown={(e) => {
+            if (e.key == "Enter") {
+              handleSubmit(e);
+            }
+          }}        />
         <button
           onClick={handleSubmit}
           className="bg-voilet hover:bg-violet-500 text-white font-medium py-2 px-4 rounded-full"
