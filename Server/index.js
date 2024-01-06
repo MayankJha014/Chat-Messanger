@@ -7,7 +7,7 @@ const messageRouter = require("./routes/message");
 const app = express();
 const { Server } = require("socket.io");
 const http = require("http");
-require("dotenv").config();
+// require("dotenv").config();
 
 // const cors = require("./config/cors");
 
