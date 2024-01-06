@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const UserSchema = require("../model/user");
 const ApiError = require("../middleware/apiError");
@@ -27,7 +27,7 @@ async function signUp(req, res) {
       );
     }
 
-    const hashedPassword = await bcrypt.hash(password, 8);
+    const hashedPassword = await bcryptjs.hash(password, 8);
     let user;
     if (profilePic) {
       user = new UserSchema({
@@ -81,7 +81,7 @@ async function login(req, res) {
         ApiError.notFound("User with this email does not exist!")
       );
     }
-    const isMatch = await bcrypt.compare(authBody.password, user.password);
+    const isMatch = await bcryptjs.compare(authBody.password, user.password);
     if (!isMatch) {
       return Response.error(res, ApiError.badRequest("Incorrect password!!!"));
     }
