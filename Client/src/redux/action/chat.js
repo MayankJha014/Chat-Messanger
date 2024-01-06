@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 export const getAllChat = createAsyncThunk("getChat", async () => {
   try {
     const token = localStorage.getItem("token");
-    const res = await fetch("http://localhost:4000/api/chat", {
+    const res = await fetch("https://chat-messanger-beta.vercel.app/api/chat", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -33,14 +33,17 @@ export const createGroupChat = createAsyncThunk(
         name: formData.name,
         users: formData.members,
       };
-      const res = await fetch("http://localhost:4000/api/group", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-        body: JSON.stringify(inputData),
-      });
+      const res = await fetch(
+        "https://chat-messanger-beta.vercel.app/api/group",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+          body: JSON.stringify(inputData),
+        }
+      );
       if (!res.ok) {
         const errorData = await res.json();
         throw new Error(errorData.error);
@@ -60,14 +63,17 @@ export const updateGroupChat = createAsyncThunk(
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch("http://localhost:4000/api/update", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-        body: JSON.stringify(formData),
-      });
+      const res = await fetch(
+        "https://chat-messanger-beta.vercel.app/api/update",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       if (!res.ok) {
         const errorData = await res.json();
         throw new Error(errorData.error);

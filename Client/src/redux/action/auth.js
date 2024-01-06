@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const signup = createAsyncThunk("signUp", async (formData) => {
   try {
-    const res = await fetch("http://localhost:4000/register", {
+    const res = await fetch("https://chat-messanger-beta.vercel.app/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +24,7 @@ export const signup = createAsyncThunk("signUp", async (formData) => {
 
 export const login = createAsyncThunk("login", async (formData) => {
   try {
-    const res = await fetch("http://localhost:4000/login", {
+    const res = await fetch("https://chat-messanger-beta.vercel.app/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +49,7 @@ export const getUser = createAsyncThunk("getUser", async () => {
     const token = localStorage.getItem("token");
 
     console.log(token);
-    const res = await fetch("http://localhost:4000/getuser", {
+    const res = await fetch("https://chat-messanger-beta.vercel.app/getuser", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

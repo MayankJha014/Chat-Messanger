@@ -4,7 +4,7 @@ export const searchUser = createAsyncThunk("searchUser", async (search) => {
   try {
     const token = localStorage.getItem("token");
     const res = await fetch(
-      `http://localhost:4000/searchUser?search=${search}`,
+      `https://chat-messanger-beta.vercel.app/searchUser?search=${search}`,
       {
         method: "GET",
         headers: {
