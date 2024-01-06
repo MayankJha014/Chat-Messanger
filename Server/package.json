@@ -3,12 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-<<<<<<< HEAD
-=======
   "engines": {
     "node": "18.x"
   },
->>>>>>> b33cb056ed32dd82d1cc8430f6ef96591e18088a
   "scripts": {
     "start": "nodemon index.js"
   },
