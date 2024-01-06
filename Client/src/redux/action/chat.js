@@ -3,13 +3,16 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 export const getAllChat = createAsyncThunk("getChat", async () => {
   try {
     const token = localStorage.getItem("token");
-    const res = await fetch("https://chat-messanger-beta.vercel.app/api/chat", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: token,
-      },
-    });
+    const res = await fetch(
+      "https://nodejs-production-d4ec.up.railway.app/api/chat",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      }
+    );
     if (!res.ok) {
       const errorData = await res.json();
       throw new Error(errorData.error);
@@ -34,7 +37,7 @@ export const createGroupChat = createAsyncThunk(
         users: formData.members,
       };
       const res = await fetch(
-        "https://chat-messanger-beta.vercel.app/api/group",
+        "https://nodejs-production-d4ec.up.railway.app/api/group",
         {
           method: "POST",
           headers: {
@@ -64,7 +67,7 @@ export const updateGroupChat = createAsyncThunk(
       const token = localStorage.getItem("token");
 
       const res = await fetch(
-        "https://chat-messanger-beta.vercel.app/api/update",
+        "https://nodejs-production-d4ec.up.railway.app/api/update",
         {
           method: "POST",
           headers: {

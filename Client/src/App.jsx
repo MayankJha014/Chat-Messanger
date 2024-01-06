@@ -11,7 +11,7 @@ import { getUser } from "./redux/action/auth";
 import io from "socket.io-client";
 import ThemeProvider from "./theme/theme_provider";
 
-const socket = io("https://chat-messanger-beta.vercel.app", {
+const socket = io("https://nodejs-production-d4ec.up.railway.app", {
   path: "/socket",
   reconnection: true,
   transports: ["websocket", "polling"],
