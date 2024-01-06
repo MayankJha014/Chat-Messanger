@@ -17,7 +17,7 @@ const DB =
   "mongodb+srv://mayankjha014:1234@cluster0.irjg6zb.mongodb.net/Social_Message?retryWrites=true&w=majority";
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://chat-messanger-front.vercel.app",
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
     allowedHeaders: "Content-Type,Authorization", // Specify the allowed headers
   })
@@ -34,7 +34,7 @@ const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
     "Access-Control-Allow-Origin": "*",
-    origin: "http://localhost:5173",
+    origin: "https://chat-messanger-front.vercel.app",
     credentials: true,
   },
 });
