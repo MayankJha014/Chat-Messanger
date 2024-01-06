@@ -499,7 +499,7 @@ const Chat = ({ socket }) => {
         open={open}
         setOpen={setOpen}
         width="sm:w-[50%] w-[95%]"
-        dialogText={"Create New Group"}
+        dialogText={"Update Group"}
       >
         <div className="flex flex-col">
           <label
