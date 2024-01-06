@@ -11,7 +11,9 @@ import { getUser } from "./redux/action/auth";
 import socketIO from "socket.io-client";
 import ThemeProvider from "./theme/theme_provider";
 
-const socket = socketIO.connect("https://chat-messanger-beta.vercel.app");
+const socket = socketIO.connect("https://chat-messanger-beta.vercel.app" ,{
+   "transports": ['websocket']
+});
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
