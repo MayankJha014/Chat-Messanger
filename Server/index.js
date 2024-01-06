@@ -7,12 +7,12 @@ const messageRouter = require("./routes/message");
 const app = express();
 const { Server } = require("socket.io");
 const http = require("http");
+require("dotenv").config();
 
 // const cors = require("./config/cors");
 
 const PORT = 4000;
-const DB =
-  "mongodb+srv://mayankjha014:1234@cluster0.irjg6zb.mongodb.net/Social_Message?retryWrites=true&w=majority";
+const DB = process.env.DB;
 app.use(
   cors({
     origin: "http://localhost:5173",
