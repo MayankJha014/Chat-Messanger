@@ -12,7 +12,7 @@ require("dotenv").config();
 // const cors = require("./config/cors");
 
 const PORT = 4000;
-const DB = process.env.DB;
+const DB = "mongodb+srv://mayankjha014:1234@cluster0.irjg6zb.mongodb.net/Social_Message?retryWrites=true&w=majority";
 app.use(
   cors({
     origin: "http://localhost:5173",
