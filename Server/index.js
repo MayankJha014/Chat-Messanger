@@ -31,12 +31,16 @@ app.use(messageRouter);
 const server = http.createServer(app);
 
 const io = new Server(server, {
+  path: "/socket",
   pingTimeout: 60000,
   cors: {
     "Access-Control-Allow-Origin": "*",
     origin: "https://chat-messanger-front.vercel.app",
     credentials: true,
   },
+  allowEIO: true,
+  wssEngine: ["ws", "wss"],
+  transports: ["websocket", "polling"],
 });
 
 io.on("connection", (socket) => {
