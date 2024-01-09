@@ -507,7 +507,7 @@ const Chat = ({ socket }) => {
         open={open}
         setOpen={setOpen}
         width="sm:w-[50%] w-[95%]"
-        dialogText={"Create New Group"}
+        dialogText={"Update Group"}
       >
         <div className="flex flex-col">
           <label
@@ -617,10 +617,9 @@ const SendMessage = (props) => {
   const dispatch = useDispatch();
 
   const handleTyping = (e) => {
-    setContent(e.target.value);
-    console.log("1");
-    if (props.socketConnected == false) {
-      console.log("b");
+    setContent(e);
+
+    if (!props.socketConnected) {
       return;
     }
     console.log("2");
@@ -670,45 +669,15 @@ const SendMessage = (props) => {
         !props.theme ? " bg-slate-700 " : " bg-white "
       } px-4 pb-5 pt-2 transition-colors duration-500`}
     >
-      <div className="flex items-center gap-4">
-        {showEmojis && (
-          <div>
-            <Picker data={data} onEmojiSelect={console.log} />
-          </div>
-        )}
-        <button
-          className={`w-6  ${
-            props.theme ? " text-slate-700 " : " text-white "
-          }`}
-          onClick={() => setShowEmojis(!showEmojis)}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="icon"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-        </button>
-        <input
+      <div className="flex items-center">
+        <InputEmoji
           className="w-full border h-11 font-public-sans text-sm bg-slate-200  focus:outline-none rounded-md py-2 px-4 mr-2"
           type="text"
           placeholder="Type your message..."
           name="sendMsg"
           value={content}
-          onChange={handleTyping}
-          onKeyDown={(e) => {
-            if (e.key == "Enter") {
-              handleSubmit(e);
-            }
-          }}
+          onChange={(e) => handleTyping(e)}
+          onEnter={handleSubmit}
         />
         <button
           onClick={handleSubmit}
