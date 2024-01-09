@@ -7,7 +7,7 @@ export const fetchChat = createAsyncThunk("fetchChat", async (formData) => {
     const inputData = {
       userId: formData,
     };
-    const res = await fetch("http://localhost:4000/", {
+    const res = await fetch("https://nodejs-production-d4ec.up.railway.app/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,13 +33,16 @@ export const fetchChatById = createAsyncThunk(
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch(`http://localhost:4000/api/chat/${formData}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-      });
+      const res = await fetch(
+        `https://nodejs-production-d4ec.up.railway.app/api/chat/${formData}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+        }
+      );
       if (!res.ok) {
         const errorData = await res.json();
         throw new Error(errorData.error);
@@ -58,14 +61,17 @@ export const sendMessage = createAsyncThunk(
   async (formData) => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:4000/api/message", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-        body: JSON.stringify(formData),
-      });
+      const res = await fetch(
+        "https://nodejs-production-d4ec.up.railway.app/api/message",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       if (!res.ok) {
         const errorData = await res.json();
         throw new Error(errorData.error);
@@ -85,13 +91,16 @@ export const getAllMessage = createAsyncThunk(
   async (formData) => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:4000/api/message/${formData}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-      });
+      const res = await fetch(
+        `https://nodejs-production-d4ec.up.railway.app/api/message/${formData}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+        }
+      );
       if (!res.ok) {
         const errorData = await res.json();
         throw new Error(errorData.error);
