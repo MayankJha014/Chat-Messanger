@@ -41,11 +41,6 @@ const Navbar = ({ children }) => {
   }, [authData]);
 
   useEffect(() => {
-    if (authData == null) {
-      navigate("/");
-    }
-  }, [authData]);
-  useEffect(() => {
     if (isMessage && isSuccess == false) {
       toast.error(isMessage);
     }
