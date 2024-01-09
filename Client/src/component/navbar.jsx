@@ -11,6 +11,7 @@ import { IoMdPerson } from "react-icons/io";
 import { MdOutlineLightMode, MdPermContactCalendar } from "react-icons/md";
 import { IoMdSettings } from "react-icons/io";
 import themeContext from "../theme/theme_context";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ children }) => {
   const [open, setOpen] = useState(false);
@@ -23,6 +24,7 @@ const Navbar = ({ children }) => {
 
   const theme = useContext(themeContext);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (member == "") {
@@ -32,6 +34,11 @@ const Navbar = ({ children }) => {
     }
   }, [member]);
 
+  useEffect(() => {
+    if (authData == null) {
+      navigate("/");
+    }
+  }, [authData]);
   useEffect(() => {
     if (isMessage && isSuccess == false) {
       toast.error(isMessage);

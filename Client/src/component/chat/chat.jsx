@@ -21,6 +21,10 @@ import InputEmoji from "react-input-emoji";
 import { addMessageData, clearMessage } from "../../redux/slice/message";
 import Dailog from "../dialog";
 import themeContext from "../../theme/theme_context";
+import EmojiPicker from "emoji-picker-react";
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react"; // import "emoji-mart/css/emoji-mart.css";
+
 var selectedChatCompare;
 
 const Chat = ({ socket }) => {
@@ -87,6 +91,10 @@ const Chat = ({ socket }) => {
     });
     setUserId("");
   };
+
+  useEffect(() => {
+    console.log(isTyping);
+  }, [isTyping]);
 
   useEffect(() => {
     if (userId !== "") {
@@ -604,18 +612,25 @@ const Chat = ({ socket }) => {
 
 const SendMessage = (props) => {
   const [content, setContent] = useState();
+  const [showEmojis, setShowEmojis] = useState(false);
+
   const dispatch = useDispatch();
 
   const handleTyping = (e) => {
-    setContent(e);
-
-    if (!props.socketConnected) {
+    setContent(e.target.value);
+    console.log("1");
+    if (props.socketConnected == false) {
+      console.log("b");
       return;
     }
-    if (!props.typing) {
+    console.log("2");
+    console.log(props.typing == false);
+    if (props.typing == false) {
+      console.log("3");
       props.setTyping(true);
       props.socket.emit("typing", selectedChatCompare);
     }
+    console.log("4");
     let lastTypingTime = new Date().getTime();
     var timerLength = 3000;
 
@@ -631,6 +646,7 @@ const SendMessage = (props) => {
 
   useEffect(() => {
     console.log(content);
+    console.log(props.typing);
   }, [content]);
 
   const handleSubmit = () => {
@@ -654,15 +670,45 @@ const SendMessage = (props) => {
         !props.theme ? " bg-slate-700 " : " bg-white "
       } px-4 pb-5 pt-2 transition-colors duration-500`}
     >
-      <div className="flex items-center">
-        <InputEmoji
+      <div className="flex items-center gap-4">
+        {showEmojis && (
+          <div>
+            <Picker data={data} onEmojiSelect={console.log} />
+          </div>
+        )}
+        <button
+          className={`w-6  ${
+            props.theme ? " text-slate-700 " : " text-white "
+          }`}
+          onClick={() => setShowEmojis(!showEmojis)}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="icon"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </button>
+        <input
           className="w-full border h-11 font-public-sans text-sm bg-slate-200  focus:outline-none rounded-md py-2 px-4 mr-2"
           type="text"
           placeholder="Type your message..."
           name="sendMsg"
           value={content}
-          onChange={(e) => handleTyping(e)}
-          onEnter={handleSubmit}
+          onChange={handleTyping}
+          onKeyDown={(e) => {
+            if (e.key == "Enter") {
+              handleSubmit(e);
+            }
+          }}
         />
         <button
           onClick={handleSubmit}

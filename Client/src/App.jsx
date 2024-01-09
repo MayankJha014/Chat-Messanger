@@ -11,7 +11,7 @@ import { getUser } from "./redux/action/auth";
 import io from "socket.io-client";
 import ThemeProvider from "./theme/theme_provider";
 
-const socket = io("https://nodejs-production-d4ec.up.railway.app", {
+const socket = io("http://localhost:4000", {
   path: "/socket",
   reconnection: true,
   transports: ["websocket", "polling"],

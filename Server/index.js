@@ -7,17 +7,14 @@ const messageRouter = require("./routes/message");
 const app = express();
 const { Server } = require("socket.io");
 const http = require("http");
+require("dotenv").config();
 
-// const cors = require("./config/cors");
+const PORT = process.env.PORT;
+const DB = process.env.DB;
 
-//Done
-
-const PORT = 4000;
-const DB =
-  "mongodb+srv://mayankjha014:1234@cluster0.irjg6zb.mongodb.net/Social_Message?retryWrites=true&w=majority";
 app.use(
   cors({
-    origin: "https://chat-messanger-front.vercel.app",
+    origin: "http://localhost:5173",
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
     allowedHeaders: "Content-Type,Authorization", // Specify the allowed headers
   })
@@ -35,7 +32,7 @@ const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
     "Access-Control-Allow-Origin": "*",
-    origin: "https://chat-messanger-front.vercel.app",
+    origin: "http://localhost:5173",
     credentials: true,
   },
   allowEIO: true,
