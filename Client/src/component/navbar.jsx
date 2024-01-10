@@ -12,6 +12,7 @@ import { MdOutlineLightMode, MdPermContactCalendar } from "react-icons/md";
 import { IoMdSettings } from "react-icons/io";
 import themeContext from "../theme/theme_context";
 import { useNavigate } from "react-router-dom";
+import { MdOutlineMessage } from "react-icons/md";
 
 const Navbar = ({ children }) => {
   const [open, setOpen] = useState(false);
@@ -109,7 +110,16 @@ const Navbar = ({ children }) => {
               </span>
             </div>
             <div className="relative inline-flex self-center sidebar4">
-              <img
+              <MdOutlineMessage
+                size={25}
+                className={
+                  !theme.theme
+                    ? " text-white cursor-pointer"
+                    : " text-[#6f7178] cursor-pointer"
+                }
+              />
+
+              {/* <img
                 width="30"
                 height="30"
                 src="https://img.icons8.com/sf-regular/48/7c7e84/chat-message.png"
@@ -119,7 +129,7 @@ const Navbar = ({ children }) => {
                     ? " text-white invert"
                     : " text-grey invert-[35%]"
                 } cursor-pointer brightness-0 `}
-              />
+              /> */}
 
               <span className="absolute rounded-full  py-1 px-2 -translate-x-4 text-xs font-medium content-[''] leading-none grid place-items-center   -translate-y-7 bg-gray-600 text-white ">
                 Message
