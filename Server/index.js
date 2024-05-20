@@ -14,7 +14,8 @@ const DB = process.env.DB;
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    "Access-Control-Allow-Origin": "*",
+    origin: "https://chat-messanger-front.vercel.app",
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
     allowedHeaders: "Content-Type,Authorization", // Specify the allowed headers
   })
@@ -32,7 +33,7 @@ const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
     "Access-Control-Allow-Origin": "*",
-    origin: "http://localhost:5173",
+    origin: "https://chat-messanger-front.vercel.app",
     credentials: true,
   },
   allowEIO: true,
