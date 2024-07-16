@@ -2,16 +2,13 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const signup = createAsyncThunk("signUp", async (formData) => {
   try {
-    const res = await fetch(
-      "https://nodejs-production-d4ec.up.railway.app/register",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      }
-    );
+    const res = await fetch("https://chat-messanger-beta.vercel.app/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
     const data = await res.json();
     if (data?.success == false) {
       throw new Error(data.message);
@@ -27,16 +24,13 @@ export const signup = createAsyncThunk("signUp", async (formData) => {
 
 export const login = createAsyncThunk("login", async (formData) => {
   try {
-    const res = await fetch(
-      "https://nodejs-production-d4ec.up.railway.app/login",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      }
-    );
+    const res = await fetch("https://chat-messanger-beta.vercel.app/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
     const data = await res.json();
     if (data?.success == false) {
       const errorData = await res.json();
@@ -55,16 +49,13 @@ export const getUser = createAsyncThunk("getUser", async () => {
     const token = localStorage.getItem("token");
 
     console.log(token);
-    const res = await fetch(
-      "https://nodejs-production-d4ec.up.railway.app/getuser",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-      }
-    );
+    const res = await fetch("https://chat-messanger-beta.vercel.app/getuser", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    });
     if (!res.ok) {
       const errorData = await res.json();
       throw new Error(errorData.error);

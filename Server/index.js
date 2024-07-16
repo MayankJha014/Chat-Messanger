@@ -9,8 +9,9 @@ const { Server } = require("socket.io");
 const http = require("http");
 require("dotenv").config();
 
-const PORT = process.env.PORT;
-const DB = process.env.DB;
+const PORT = 4000;
+const DB =
+  "mongodb+srv://mayankjha014:1234@cluster0.irjg6zb.mongodb.net/Social_Message?retryWrites=true&w=majority";
 
 app.use(
   cors({

@@ -7,7 +7,7 @@ export const fetchChat = createAsyncThunk("fetchChat", async (formData) => {
     const inputData = {
       userId: formData,
     };
-    const res = await fetch("https://nodejs-production-d4ec.up.railway.app/", {
+    const res = await fetch("https://chat-messanger-beta.vercel.app/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,7 +34,7 @@ export const fetchChatById = createAsyncThunk(
       const token = localStorage.getItem("token");
 
       const res = await fetch(
-        `https://nodejs-production-d4ec.up.railway.app/api/chat/${formData}`,
+        `https://chat-messanger-beta.vercel.app/api/chat/${formData}`,
         {
           method: "GET",
           headers: {
@@ -62,7 +62,7 @@ export const sendMessage = createAsyncThunk(
     try {
       const token = localStorage.getItem("token");
       const res = await fetch(
-        "https://nodejs-production-d4ec.up.railway.app/api/message",
+        "https://chat-messanger-beta.vercel.app/api/message",
         {
           method: "POST",
           headers: {
@@ -92,7 +92,7 @@ export const getAllMessage = createAsyncThunk(
     try {
       const token = localStorage.getItem("token");
       const res = await fetch(
-        `https://nodejs-production-d4ec.up.railway.app/api/message/${formData}`,
+        `https://chat-messanger-beta.vercel.app/api/message/${formData}`,
         {
           method: "GET",
           headers: {
