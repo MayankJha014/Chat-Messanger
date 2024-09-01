@@ -146,12 +146,11 @@ Follow these steps to set up and run the application locally:
 
 ## Screenshots
 
-Include screenshots of different parts of the application:
-
-1. **Login Screen:** A simple and clean login interface for user authentication.
-2. **Chat Interface:** Show a screenshot of the main chat interface with real-time messaging.
-3. **Group Chat:** Display how group chat looks with multiple participants.
-4. **Responsive Design:** Demonstrate how the app looks on mobile devices.
+![Screenshot 2024-09-01 140210](https://github.com/user-attachments/assets/29c81271-b641-4bbd-b3d1-63cd5f53d214)
+![Screenshot 2024-09-01 140238](https://github.com/user-attachments/assets/f7b4aff5-3150-4be6-ba97-b9680042e034)
+![Screenshot 2024-09-01 140346](https://github.com/user-attachments/assets/1e4f0ff1-e5cd-4c1c-8206-0653e92d820b)
+![Screenshot 2024-09-01 140434](https://github.com/user-attachments/assets/dec7c88c-7a40-4b27-ae62-b1093c5e69b2)
+![Screenshot 2024-09-01 140521](https://github.com/user-attachments/assets/008f1942-668f-4c76-9e1e-35bf8d5d1a0f)
 
 ## License
 
